@@ -1,7 +1,12 @@
 import "./App.css";
+import Expense from "./components/Expense";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <>
+      <Expense />
+    </>
+  );
 }
 
 export default App;
