@@ -24,7 +24,10 @@ const PriceBox = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 }));
 
-const Expense = () => {
+const Expense = (props) => {
+  const month = props.date.split(" ")[0];
+  const year = props.date.split(" ")[1];
+  const day = props.date.split(" ")[2];
   return (
     <Container
       sx={(theme) => ({
@@ -34,12 +37,13 @@ const Expense = () => {
         display: "flex",
         justifyContent: "space-between",
         padding: theme.spacing(1),
+        mb: theme.spacing(2),
       })}
     >
       <DateBox>
-        <Typography>March</Typography>
-        <Typography>2021</Typography>
-        <Typography variant="h4">12</Typography>
+        <Typography>{month}</Typography>
+        <Typography>{year}</Typography>
+        <Typography variant="h4">{day}</Typography>
       </DateBox>
 
       <Typography
@@ -52,10 +56,10 @@ const Expense = () => {
           ml: "5%",
         })}
       >
-        New TV
+        {props.desc}
       </Typography>
 
-      <DateBox sx={{ width: 100, height: 50, mt: 2 }}>$ 780</DateBox>
+      <DateBox sx={{ width: 100, height: 50, mt: 2 }}>{props.price}</DateBox>
     </Container>
   );
 };
