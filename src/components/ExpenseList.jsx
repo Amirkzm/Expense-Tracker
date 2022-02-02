@@ -1,20 +1,20 @@
 import { Container } from "@mui/material";
 import React from "react";
-import Expense from "./Expense";
+import ExpenseItem from "./ExpenseItem";
 
 const ExpenseList = (props) => {
-  return (
-    <Container>
-      {props.data.map((item) => (
-        <Expense
-          key={item.id}
-          date={item.date}
-          price={item.price}
-          desc={item.description}
-        />
-      ))}
-    </Container>
-  );
+  console.log(props.data);
+  const expenses = props.data.map((item) => {
+    return (
+      <ExpenseItem
+        key={item.id}
+        date={item.date}
+        price={item.price}
+        desc={item.description}
+      />
+    );
+  });
+  return <Container sx={{}}>{expenses}</Container>;
 };
 
 export default ExpenseList;

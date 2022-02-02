@@ -16,15 +16,7 @@ const DateBox = styled(Box)(({ theme }) => ({
   flexDirection: "column",
 }));
 
-const PriceBox = styled(Box)(({ theme }) => ({
-  width: 100,
-  height: 50,
-  backgroundColor: theme.palette.common.black,
-  color: theme.palette.common.white,
-  borderRadius: theme.shape.borderRadius,
-}));
-
-const Expense = (props) => {
+const ExpenseItem = (props) => {
   const month = props.date.split(" ")[0];
   const year = props.date.split(" ")[1];
   const day = props.date.split(" ")[2];
@@ -32,12 +24,13 @@ const Expense = (props) => {
     <Container
       sx={(theme) => ({
         width: "40%",
+        height: "20%",
         borderRadius: 4,
         bgcolor: theme.palette.grey[600],
         display: "flex",
         justifyContent: "space-between",
         padding: theme.spacing(1),
-        mb: theme.spacing(2),
+        mb: theme.spacing(1),
       })}
     >
       <DateBox>
@@ -64,4 +57,4 @@ const Expense = (props) => {
   );
 };
 
-export default Expense;
+export default ExpenseItem;
