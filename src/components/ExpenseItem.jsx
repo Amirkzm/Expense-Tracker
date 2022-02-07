@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 
@@ -23,8 +23,9 @@ const ExpenseItem = (props) => {
   return (
     <Container
       sx={(theme) => ({
-        width: "40%",
+        width: "90%",
         height: "20%",
+
         borderRadius: 4,
         bgcolor: theme.palette.grey[600],
         display: "flex",
