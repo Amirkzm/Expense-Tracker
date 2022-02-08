@@ -1,11 +1,17 @@
-import { Box, Container, Slide, styled, Typography } from "@mui/material";
-import React, { useRef, useState } from "react";
+import { Box, Container, styled, Typography } from "@mui/material";
 
 const ChartItem = styled(Box)(({ theme }) => ({
   width: 10,
   height: 90,
   backgroundColor: theme.palette.secondary.light,
   borderRadius: theme.shape.borderRadius,
+}));
+
+const TransitionChart = styled(Box)(({ theme }) => ({
+  width: 10,
+  backgroundColor: theme.palette.primary.main,
+  borderRadius: theme.shape.borderRadius,
+  transition: "all 0.5s ease-out",
 }));
 
 const ChartData = [
@@ -24,7 +30,6 @@ const ChartData = [
 ];
 
 const ExpenseChartItem = (props) => {
-  const [slideBar, setSlidebar] = useState(true);
   ChartData.forEach((item) => (item.value = 0));
   let totalExpense = 0.0;
   props.data.forEach((expense) => {
@@ -56,16 +61,7 @@ const ExpenseChartItem = (props) => {
             overflow: "hidden",
           }}
         >
-          <Slide direction="up" in={slideBar} timeout={1000}>
-            <Box
-              sx={(theme) => ({
-                width: 10,
-                height: temp,
-                backgroundColor: theme.palette.primary.main,
-                borderRadius: theme.shape.borderRadius,
-              })}
-            />
-          </Slide>
+          <TransitionChart sx={{ height: temp }} />
         </ChartItem>
         <Typography sx={{ color: "white", fontSize: 8 }}>
           {item.label}
@@ -73,7 +69,6 @@ const ExpenseChartItem = (props) => {
       </Box>
     );
   });
-  slideBar = false;
   return <Container sx={{ display: "flex", mb: 10 }}>{chartBox}</Container>;
 };
 

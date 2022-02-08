@@ -15,7 +15,7 @@ const Expenses = (props) => {
   const [selectedYear, setSelectedYear] = useState(
     props.data.map((item) => item.date.split(" ")[1]).sort()[0]
   );
-  const [yearChanged, setYearChanged] = useState("false");
+  const [yearChanged, setYearChanged] = useState(false);
 
   const changeYearHandler = (year) => {
     setSelectedYear(year);
@@ -25,6 +25,7 @@ const Expenses = (props) => {
       })
     );
     setYearChanged((prev) => !prev);
+    console.log(yearChanged);
   };
 
   return (
@@ -36,10 +37,11 @@ const Expenses = (props) => {
       })}
     >
       <ExpenseFilter data={props.data} onChangeYear={changeYearHandler} />
+      {console.log(yearChanged)}
       <ExpenseChartItem
         data={filteredExpense}
         selectedYear={selectedYear}
-        yearChanged={yearChanged}
+        hasYearChanged={yearChanged}
       />
       <ExpenseList data={filteredExpense} />
     </Container>

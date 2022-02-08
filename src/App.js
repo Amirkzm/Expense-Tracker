@@ -1,5 +1,6 @@
 import "./App.css";
 import Expenses from "./components/Expenses";
+import ExpenseForm from "./components/newExpense/ExpenseForm";
 
 const DUMMY_EXPENSES = [
   { id: "e1", date: "March 2021 12", description: "New TV", price: "$780" },
@@ -19,9 +20,8 @@ const DUMMY_EXPENSES = [
 function App() {
   return (
     <>
+      <ExpenseForm />
       <Expenses data={DUMMY_EXPENSES} />
-      {/* <ExpenseFilter data={DUMMY_EXPENSES} onChangeSelect={selectHandler} />
-      <ExpenseList data={DUMMY_EXPENSES} selectedYear={selectedYear} /> */}
     </>
   );
 }
