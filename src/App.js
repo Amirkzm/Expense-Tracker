@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import Expenses from "./components/Expenses";
 import ExpenseForm from "./components/newExpense/ExpenseForm";
@@ -18,10 +19,26 @@ const DUMMY_EXPENSES = [
 ];
 
 function App() {
+  const [initialData, setInitialData] = useState(DUMMY_EXPENSES);
+
+  const addExpenseHandler = (title, price, date) => {
+    const id =
+      "e" + (parseInt(initialData[initialData.length - 1].id.split("")[1]) + 1);
+    setInitialData([
+      ...initialData,
+      {
+        id: id,
+        date: date,
+        description: title,
+        price: price,
+      },
+    ]);
+  };
   return (
     <>
-      <ExpenseForm />
-      <Expenses data={DUMMY_EXPENSES} />
+      {console.log(JSON.stringify(initialData))}
+      <ExpenseForm onAddExpense={addExpenseHandler} />
+      <Expenses data={initialData} />
     </>
   );
 }
